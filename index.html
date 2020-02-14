@@ -1,0 +1,91 @@
+
+<h3>A Very Important Calculator of Socks</h3>
+
+<p>How many individual socks do you have?
+<input id="single-socks" type="text" style="width: 500px; height: 50px; font-size: 50;"/>
+</p>
+<button id="fivesockbutt">The Button That Adds Five Socks</button><button id="doubsockbutt">Sock Doubler</button><button id="exposockbutt">Sock Exponentializer</button>
+<br>
+<button id="badsockbutt">That's too many socks, Phil!</button>
+<br><br>
+<input id="paired-socks" type="text" style="width: 1000px;"/>
+<br>
+<input id="cut-socks" type="text" style="width: 1000px;"/>
+<br><br>
+<input id="wo-socks" type="text" style="width: 1000px"/>
+
+
+<style>
+body
+    {
+        background-color:slategray ;
+        padding-left: 200px;
+        padding-top: 200px;
+        font-family:'Times New Roman', Times, serif;
+        font-size: 32;
+    }
+</style>
+
+<script>
+let singSock = document.getElementById('single-socks');
+let pairSock = document.getElementById('paired-socks');
+let cutSock = document.getElementById('cut-socks')
+let woSock = document.getElementById('wo-socks')
+let infisockbutt = document.getElementById('infisockbutt')
+let doubsockbutt = document.getElementById('doubsockbutt')
+let exposockbutt = document.getElementById('exposockbutt')
+let badsockbutt = document.getElementById('badsockbutt')
+
+fivesockbutt.addEventListener('click',function()
+{
+singSock.value = singSock.value -(-5)
+let socknumber = singSock.value;
+pairSock.value = "Okay, because you said you have " + socknumber + " individual socks, I have determined that you have " + socknumber/2 + " pairs of them.";
+cutSock.value = "However, if you were, instead, to cut the individual socks in half with scissors, a knife, or a guillotine, you would have " + socknumber*2 + " sock-halves."
+woSock.value = "This means you could provide socks for " + (socknumber/7000000000)*100 + "% of the world's population."
+})
+
+doubsockbutt.addEventListener('click',function()
+{
+singSock.value = singSock.value*2
+let socknumber = singSock.value;
+pairSock.value = "Okay, because you said you have " + socknumber + " individual socks, I have determined that you have " + socknumber/2 + " pairs of them.";
+cutSock.value = "However, if you were, instead, to cut the individual socks in half with scissors, a knife, or a guillotine, you would have " + socknumber*2 + " sock-halves."
+woSock.value = "This means you could provide socks for " + (socknumber/7000000000)*50 + "% of the world's population."
+})
+
+exposockbutt.addEventListener('click',function()
+{
+singSock.value = singSock.value*singSock.value
+let socknumber = singSock.value;
+pairSock.value = "Okay, because you said you have " + socknumber + " individual socks, I have determined that you have " + socknumber/2 + " pairs of them.";
+cutSock.value = "However, if you were, instead, to cut the individual socks in half with scissors, a knife, or a guillotine, you would have " + socknumber*2 + " sock-halves."
+woSock.value = "This means you could provide socks for " + (socknumber/7000000000)*50 + "% of the world's population."
+})
+
+badsockbutt.addEventListener('click',function()
+{
+singSock.value = singSock.value/2
+let socknumber = singSock.value;
+pairSock.value = "Okay, because you said you have " + socknumber + " individual socks, I have determined that you have " + socknumber/2 + " pairs of them.";
+cutSock.value = "However, if you were, instead, to cut the individual socks in half with scissors, a knife, or a guillotine, you would have " + socknumber*2 + " sock-halves."
+woSock.value = "This means you could provide socks for " + (socknumber/7000000000)*50 + "% of the world's population."
+})
+
+singSock.addEventListener('change',function(){
+let socknumber = singSock.value;
+pairSock.value = "Okay, because you said you have " + socknumber + " individual socks, I have determined that you have " + socknumber/2 + " pairs of them.";
+cutSock.value = "However, if you were, instead, to cut the individual socks in half with scissors, a knife, or a guillotine, you would have " + socknumber*2 + " sock-halves."
+woSock.value = "This means you could provide socks for " + (socknumber/7000000000)*50 + "% of the world's population."
+})
+
+
+
+
+
+
+
+
+
+
+</script>
