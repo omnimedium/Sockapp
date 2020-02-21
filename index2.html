@@ -1,0 +1,34 @@
+<h1>Tor's Computational Tasks</h1>
+
+
+
+<script>
+
+function say (words, transform){
+ 
+    if (transform == 1){
+        words = words.toUpperCase(); 
+    }
+    if (transform == 2){
+        words = words.toLowerCase(); 
+    }
+
+    words += "<br/>"
+
+    document.body.innerHTML += words;
+}
+
+function shout (words){
+    say(words + "!!!", 1, true);
+}
+
+function whisper (words){
+    say(words + "...", 2, false )
+}
+
+
+shout("But that's okay, that's all part of the learning process",1);
+whisper("But that's okay, that's all part of the learning process",2);
+say("But that's okay, that's all part of the LEARNING process.", 0)
+
+</script>

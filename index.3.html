@@ -1,0 +1,38 @@
+<h2>The Knowledge Machine</h2>
+
+<button id= "Know">How much knowledge do you want to add to your brain?</button>
+<input id= "Num" type="text">
+<p id = "result"></p>
+
+<script>
+    let base = 0;
+    let Know = document.getElementById("Know");
+    let x = document.getElementById("Num");
+
+ 
+    Know.onclick = function() {edu(); say();}
+     
+    function edu(){
+
+            base = base + parseInt(x.value)
+        }
+    function say(){
+        if (base < 100){
+            words = "You currently have " + base + " chunks of knowledge in your brain. That's not very many.";
+        }
+        if (base > 100 && base < 1000){
+            words = "Now you have " + base + " chunks of knowledge in your brain. That's a bit better, but still not very impressive.";
+        }
+        if (base > 1000 && base < 2000){
+            words = "Right then, you've managed to get " + base + " chunks of knowledge in your brain. You're on par with the average kindergartener.";
+        }
+        if (base > 2000){
+            words = "I'm afraid you peaked in kindergarten."
+        }   
+        document.getElementById("result").innerHTML += "<br/>" + words;
+    }
+
+
+    
+</script>
+
