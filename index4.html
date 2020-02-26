@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+
+    /**
+      Returns a random number between low (inclusive) and high (exclusive).
+    */
+    function getRandomNumber(low, high) {
+    
+      let diff = high - low;
+    
+      return low + Math.floor(Math.random() * diff);
+    }
+    
+    /** Returns a lottery result consisting of 3 random numbers */ 
+    function getLotteryResult(howMany) {
+      if (!howMany) throw Error("You need to set how many. Fool!");
+    
+      let numbers = [];
+      
+      while (numbers.length < howMany) {
+        numbers.push( getRandomNumber(1, 31) );
+      }
+    
+    
+      return numbers;
+    }
+    
+    
+    
+    
+    [1, 55 ,  "hello"]
+    
+    [1,  55, "hello", 234345452]
+    
+    
+    function arraysAreEqual(arr1, arr2) {
+      if (arr1.length !== arr2.length) return false;
+    
+      let i = 0;
+      while (i < arr1.length){
+        if (arr1[i] !== arr2[i]) return false;
+        i += 1;
+      }
+      return true;
+    }
+    
+    function playTheLottery(lotteryNumbers) {
+      let winningNumbers = getLotteryResult(1);
+      return arraysAreEqual(lotteryNumbers, winningNumbers);
+    }
+    
+    
+    function playTheLotteryUntilWinning(lotteryNumbers) {
+    
+      let tries = 0;
+    
+      while (tries < 1000000000000000) {
+        tries += 1;
+        if (playTheLottery(lotteryNumbers)) break;
+      }
+    
+      return tries;
+    }
+    
+    
+    function lotteryMonteCarloAnalysis() {
+      let times = 100000;
+      let i = times;
+      let sum = 0;
+    
+      while (i > 0) {
+        i -= 1;
+        sum += playTheLotteryUntilWinning([20]);
+      }
+    
+      return sum / times;
+    }
+    
+    </script>

@@ -1,0 +1,99 @@
+<h1>Russian Roulette</h1>
+<p>Number of Bullets:</p>
+<input id="bulletNum" type="number">
+<br/><br/>
+<p>Number of Chambers:</p>
+<input id="slotNum" type="number">
+<button id="triggerButton">trigger</button>
+<p id="chance"></p>
+
+<script>
+document.getElementById("bulletNum").value = 1;
+document.getElementById("slotNum").value = 6;
+let bullets = document.getElementById("bulletNum");
+let slots = document.getElementById("slotNum");
+let shotsFired = 0
+let revolver = [];
+getProbability();
+say(1);
+ 
+/* The following functions getProbability(), trigger(), and say() determine and display probility.*/
+function getProbability(){
+    let bulletNum = bullets.value;
+    let slotNum = slots.value - shotsFired;
+    prob = (bulletNum/slotNum)*100;
+};
+
+function trigger(){
+    if (prob < 100){
+        shotsFired += 1;
+        getProbability();
+        say(1);
+    }
+    else {
+        say(2);
+    }
+};
+
+function say (wordChoice){
+    if (wordChoice == 1){
+        document.getElementById("chance").innerHTML += "<br/>" + "You have pulled the trigger " + shotsFired + " times and have a " + prob.toFixed(2) + "% chance of losing this strange game.";
+    };
+
+    if (wordChoice == 2){
+        document.getElementById("chance").innerHTML += "<br/>" + "Come on, why would you do that? I don't have the stomach for this right now."
+    };
+};
+
+/*The following functions will be my arduous attempts at randomly loading a revolver with arrays.*/
+
+function getSum(){
+    sum = revolver.reduce(function(a,b){
+        return a + b;
+    },0)
+    return sum;
+};
+
+
+function getRandom(){
+    if (getSum() < bullets.value) {
+        loadOrNot = Math.floor(Math.random()*2)
+    }
+    else {
+        loadOrNot = 0
+    }
+    return loadOrNot
+}
+
+function loadRevolver(){
+    revolver.splice(0, revolver.length);
+    while (revolver.length < slots.value){
+        revolver.push(getRandom());
+    }
+    return revolver
+}
+function checkBulletEnough(){
+    if (getSum() != bullets.value){
+        loadRevolver();
+    }
+}
+
+/*The following whatevers dictate how the user interacts with the page*/
+    
+slotNum.addEventListener("change", function(){
+    slots.value = parseInt(slots.value)
+    shotsFired = 0;
+    getProbability();
+    say(1);
+});
+
+bulletNum.addEventListener("change", function(){
+    shotsFired = 0;
+    getProbability();
+    say(1);
+});
+
+triggerButton.onclick = function(){
+        trigger();
+};
+</script>
