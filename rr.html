@@ -70,7 +70,8 @@ function loadRevolver(){
     while (revolver.length < slots.value){
         revolver.push(getRandom());
     }
-    return revolver
+    checkBulletEnough();
+    return revolver;
 }
 function checkBulletEnough(){
     if (getSum() != bullets.value){
